@@ -76,6 +76,9 @@ The Auto-Pipeline manages the end-to-end forecasting loop entirely autonomously:
 2. **Data Prefetching**: Concurrently queries Google News for identical real-world context and captures the 5-level deep active Central Limit Order Book (CLOB). Returns a locked "Snapshot".
 3. **AI Inference**: Dispatches the identical multimodal snapshot to the provider defined in your `.env` (e.g., `OPENROUTER_MODEL='google/gemini-3-flash-preview'`).
 
+### 🔹 Resolve Check (Option 2)
+Polymarket events close asynchronously. Run this option periodically to query the blockchain block state and identify exactly which prediction markets within your database have officially resolved. 
+
 ### 🔹 Integrity Check & Recovery (Options 3 & 4)
 Because fetching real-world data and large-scale AI generation can fail due to network timeouts or rate limits, **Integrity Check (Option 3)** performs a dry-run calculation identifying precisely what is broken.
 
@@ -92,9 +95,6 @@ Selecting **Integrity Recover (Option 4)** will actively heal the pipeline, patc
 
 ### 🔹 Error Recovery (Option 5)
 If AI predictions fail (e.g., due to rate limits or context window size issues), they are logged as `ERROR`. Selecting **Error recover (Option 5)** will specifically target these broken items, delete the faulty `ERROR` row to prevent unique constraint conflicts, and immediately re-run the AI analysis for those specific markets.
-
-### 🔹 Resolve Check (Option 2)
-Polymarket events close asynchronously. Run this option periodically to query the blockchain block state and identify exactly which prediction markets within your database have officially resolved. 
 
 ---
 
@@ -140,3 +140,4 @@ When PolyBench launches, it automatically checks the `OPENROUTER_API_KEY` define
 
 **Option 6: Archive ERROR Predictions**
 Should you encounter persistent AI failures mapped to specific constraints (like context limits or model timeouts), selecting this option will actively purge all broken `ERROR` entries from your active database. Before deletion, it compiles a detailed summary of the exact failure reasons (grouped by Model) and archives them safely to `model_errors_log.md` in your root repository for later audit.
+
