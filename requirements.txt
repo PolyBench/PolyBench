@@ -1,0 +1,8 @@
+peewee
+requests
+python-dotenv
+bs4
+feedparser
+google_news_api
+matplotlib
+py_clob_client
