@@ -1,5 +1,10 @@
 # PolyBench: Benchmarking LLM Forecasting and Trading Capabilities on Live Prediction Market Data
 
+![Confidence-Weighted Return Updated by Empirical Market Resolutions](assets/returns_by_date.png)
+
+<center>Figure: Confidence-Weighted Return Updated by Empirical Market Resolutions</center> 
+
+
 Welcome to the official repository for **PolyBench**, the first large-scale, contamination-proof benchmark that evaluates Large Language Models (LLMs) as autonomous trading agents on live decentralized prediction markets.
 
 This repository contains the full data collection, alignment, AI assessment, and trading execution pipeline introduced in our paper:  
@@ -13,12 +18,20 @@ This repository contains the full data collection, alignment, AI assessment, and
 
 Predicting real-world events from live market signals demands systems that fuse qualitative news with quantitative order-book dynamics under strict temporal discipline. Existing benchmarks often reduce forecasting to static text question answering.
 
+![PolyBench Pipeline](assets/pipeline.png)
+
+<center>Figure: PolyBench Construction Pipeline</center> 
+
 We present **PolyBench**, a multimodal evaluation framework built on Polymarket data that synchronously couples:
 1. **Event Resolution Criteria**: Strict conditional definitions and settlement rules.
 2. **Central Limit Order Book (CLOB) States**: Real-time liquidity, bid-ask spreads, and midpoint pricing.
 3. **Exogenous News Streams**: Pre-fetched Google News context aligned temporally with the market snapshot.
 
 Using PolyBench, we evaluated seven state-of-the-art LLMs (e.g., Gemini-3-Flash, MiMo-V2-Flash, DeepSeek-V3.2, GPT-OSS-120B) across 38,666 binary prediction markets spanning 4,997 events. The framework measures their practical financial viability via our proposed **Confidence-Weighted Return (CWR)**, Annualized Percentage Yield (APY), and Sharpe ratio.
+
+<center>Table: All LLMs' Results on Metrics</center> 
+
+![Results of All models](assets/results.png)
 
 ---
 
